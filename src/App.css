@@ -28,12 +28,8 @@ select{
   margin: 5px;
 }
 a{
-  margin: 20px;
-  padding: 20px;
-}
-.Nav{
-  margin: 10px;
-}
-.Nav a{
+  margin: 3px;
+  padding: 3px;
   color: white;
+  text-decoration: none;
 }
