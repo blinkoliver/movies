@@ -3,7 +3,8 @@ import React from "react";
 class InformationPage extends React.Component{
 
     componentDidMount() {
-        const movieId=this.props.match.params.id
+        console.log(this.props)
+        const movieId=this.props.id
     }
 
     render(){
