@@ -17,19 +17,97 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.navbar{
+  background: #191919;
+  color: #fff;
+  font: 10pt Verdana, Arial, sans-serif;
+  height: 60px;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.home{
+  width: 20%;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+
+}
+.search{
+  width: 60%;
+  align-self: center;
+}
+.search input{
+  margin: 5px 5px 0 5px;
+  width: 100%;
+  height: 30px;
+}
+
+.personal{
+  width: 20%;
+  display: flex;
+  align-self: flex-start;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.suggestSearch{
+  display: none;
+  width: 100%;
+  background-color: white;
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+.suggest a{
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  font-weight: bold;
+  color: #136CB2;
+}
+.suggest {
+  border-bottom: solid lightgrey 1px;
+}
+.suggest:hover{
+  background-color: lightgray;
+}
+.suggestionLabel{
+  display: flex;
+  flex-direction: column;
+}
+.suggestionLabel span:nth-of-type(2){
+  text-decoration: none;
+  font-weight: normal
+}
+
+.suggest img{
+  margin: 2px 0 2px 0;
+  width: 40px;
+  height: 54px;
+}
+
 button{
   margin: 5px;
+  border: none;
   border-radius:10px;
+  height: 49px;
+  background-color: darkslategray;
+  width: 100px;
 }
-input{
-  margin: 5px;
+button:hover{
+  background-color: gray;
 }
-select{
-  margin: 5px;
-}
-a{
+
+button a{
   margin: 3px;
   padding: 3px;
   color: white;
+  font-size: 14px;
   text-decoration: none;
 }

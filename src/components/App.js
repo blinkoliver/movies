@@ -1,15 +1,17 @@
 import React from 'react';
 import '../App.css';
 import Input from './Input';
-import InformationPages from './InformationPage'
+import InformationPage from './InformationPage'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+
 
 class App extends React.Component{
     state = {
         inputValue:'',
         selectedValue:'',
-        results:[]
+        results:[],
     };
+
 
     handleInput(event){
         let value=event.target.value;
@@ -18,32 +20,50 @@ class App extends React.Component{
                 .then(information=>information.json())
                 .then(posts=>{
                     let results=posts.results;
-                    results.map(element=>element.results);
                     this.setState({results:results});
-                    // console.log(this)
+                console.log(results)
                 })
+                .catch(err=>alert('error'))
         });
     }
 
   render(){
+
       return (
           <Router>
-            <div className={'App'}>
 
-                <Link to={"/"}>Home</Link>
-                <Route exact path={"/"}/>
+              <div className={'navbar'}>
 
-                <Input onChange={event=>this.handleInput(event)}/>
+                <div className={'home'}>
+                  <button><Link to={"/"}>Movie-Search</Link></button>
+                  <Route exact path={"/"}/>
+                </div>
 
-                    {this.state.results.map(result=>
-                        <Link key={result.id} to={`InformationPage/${result.id}`}>
-                            <p key={result.id}>{result.title}</p>
-                        </Link>
-                    )}
+                <div className={'search'}>
+                    <Input onChange={event=>this.handleInput(event)}/>
+                    <div className={'suggestSearch'}>
+                        {this.state.results.map(result=>
+                            <div className={'suggest'}>
+                                <Link key={result.id} to={`InformationPage/${result.id}`}>
+                                    <img src={`https://image.tmdb.org/t/p/w200${result.poster_path}`}/>
+                                    <div className={'suggestionLabel'}>
+                                        <span key={result.id}>{result.title}</span>
+                                        <span>({result.release_date.slice(0,4)})</span>
+                                    </div>
+                                </Link>
+                            </div>
+                        )}
+                    </div>
+                </div>
 
-                <Route path={`/<InformationPage/>/:id`}/>
+                <div className={'personal'}>
+                    <button><Link to={"/Cabinet"}>Sign In</Link></button>
+                </div>
 
-            </div>
+                    <Route path={'/InformationPage/:id'} component={InformationPage}/>
+
+              </div>
+
         </Router>
       )
   };
