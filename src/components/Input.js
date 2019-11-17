@@ -5,7 +5,7 @@ class Input extends React.Component{
 
     render(){
         return(
-            <input onChange={this.props.onChange} placeholder={"Find Movies, TV shows, Celebrities and more..."}/>
+            <input id={'focus'} onChange={this.props.onChange} onBlur={this.props.onBlur} onFocus={this.props.onFocus} placeholder={"Find Movies, TV shows, Celebrities and more..."}/>
         )
     }
 }

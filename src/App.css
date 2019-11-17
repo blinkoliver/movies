@@ -57,24 +57,24 @@
   flex-direction: row;
   justify-content: space-around;
 }
-.suggestSearch{
-  display: none;
+#suggestSearch{
+  display: block;
   width: 100%;
   background-color: white;
   margin: 0 0 0 5px;
   padding: 0;
 }
-.suggest a{
+#suggest a{
   display: flex;
   flex-direction: row;
   text-decoration: none;
   font-weight: bold;
   color: #136CB2;
 }
-.suggest {
+#suggest {
   border-bottom: solid lightgrey 1px;
 }
-.suggest:hover{
+#suggest:hover{
   background-color: lightgray;
 }
 .suggestionLabel{
@@ -86,7 +86,7 @@
   font-weight: normal
 }
 
-.suggest img{
+#suggest img{
   margin: 2px 0 2px 0;
   width: 40px;
   height: 54px;
