@@ -7,7 +7,6 @@ class InformationPage extends React.Component{
     };
 
     componentDidMount() {
-        console.log(this.props);
     fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US`)
         .then(information=>information.json())
         .then(post=>{
@@ -15,6 +14,12 @@ class InformationPage extends React.Component{
             console.log(this.state.post)
             }
     )}
+
+    componentDidUpdate(prevProps) {
+        if(this.props.match.params.id!==prevProps.match.params.id){
+            this.componentDidMount(this.props.match.params.id)
+        }
+    }
 
     render(){
         return(

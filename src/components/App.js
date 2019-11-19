@@ -56,7 +56,7 @@ class App extends React.Component{
                         <div id={'suggestSearch'}>
                             {this.state.results.map(result =>
                                 <div key={result.id} id={'suggest'}>
-                                    <Link key={result.id} to={`InformationPage/${result.id}`}>
+                                    <Link key={result.id} to={`/InformationPage/${result.id}`}>
                                         <img src={`https://image.tmdb.org/t/p/w500${result.poster_path}`}
                                              alt={result.title}/>
                                         <div className={'suggestionLabel'}>
