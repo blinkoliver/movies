@@ -6,6 +6,16 @@
   scroll-behavior: smooth;
   transition: all 0.5s;
 }
+.Container{
+  margin: 0 auto 0 auto;
+  width: 1170px;
+  padding: 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .App {
   text-align: center;
   min-height: 300px;
@@ -17,7 +27,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.navbar{
+.TitleBlock{
+
+}
+header{
   background: #191919;
   color: #fff;
   font: 10pt Verdana, Arial, sans-serif;
@@ -25,11 +38,7 @@
   padding: 0;
   position: relative;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  align-items: center;
+
 }
 .home{
   width: 20%;

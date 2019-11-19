@@ -28,22 +28,21 @@ class App extends React.Component{
     }
 
     onBlur=()=>{
-        this.setState({inputIsFocused:false});
+        setTimeout(()=>{this.setState({inputIsFocused:false})},[500])
         // document.getElementById("suggestSearch").style.display='none';
     };
     onFocus=()=>{
         this.setState({inputIsFocused:true});
-        // document.getElementById("suggestSearch").style.display='none';
+        // document.getElementById("suggestSearch").style.display='block';
     };
 
   render(){
 
       return (
           <Router>
-
-              <div className={'navbar'}>
-
-                <div className={'home'}>
+                  <header>
+                      <div className={'Container'}>
+                      <div className={'home'}>
                   <button><Link to={"/"}>Movie-Search</Link></button>
                   <Route exact path={"/"}/>
                 </div>
@@ -74,11 +73,12 @@ class App extends React.Component{
                 <div className={'personal'}>
                     <button><Link to={"/Cabinet"}>Sign In</Link></button>
                 </div>
-
-                    <Route path={'/InformationPage/:id'} component={InformationPage}/>
-
               </div>
-
+              </header>
+              <div className={'Content'}>
+                  <Route path={'/InformationPage/:id'} component={InformationPage}/>
+              </div>
+              <footer></footer>
         </Router>
       )
   };
