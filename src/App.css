@@ -5,16 +5,19 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   transition: all 0.5s;
+  box-sizing: border-box;
 }
+
 .Container{
   margin: 0 auto 0 auto;
   width: 1170px;
-  padding: 1px;
+  padding: 0px 1px 1px 1px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
+  text-align: center;
 }
 .App{
   text-align: center;
@@ -33,12 +36,22 @@
   justify-content: space-around;
   flex-wrap: nowrap;
   align-items: center;
+  background-color: darkslategray;
+  color: white;
+}
+.Subtext{
+  display: flex;
+  flex-direction: row;
+}
+.Subtext div{
+  border-right: solid silver 1px;
+  padding: 3px;
 
 }
 .Content .Container{
   margin: 0 auto 0 auto;
   width: 1170px;
-  padding: 1px;
+  padding: 0px 1px 1px 1px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

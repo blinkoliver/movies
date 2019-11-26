@@ -10,21 +10,25 @@ class App extends React.Component{
         selectedValue:'',
         results:[],
         inputIsFocused:true||false,
+        error:true||false,
+        loading:true
     };
 
     handleInput(event){
 
         let value=event.target.value;
         this.setState({inputValue:value},()=>{
+            if (value.length>0){
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US&query=${this.state.inputValue}&page=1&include_adult=false`)
                 .then(information=>information.json())
                 .then(posts=>{
                     let results=posts.results;
                     this.setState({results:results});
-                console.log(results)
+                // console.log(results)
                 })
-                .catch(err=>alert('error'))
-        });
+                .catch(this.setState({error:true}))
+            }}
+        );
     }
 
     onBlur=()=>{
@@ -60,7 +64,7 @@ class App extends React.Component{
                                                  alt={result.title}/>
                                             <div className={'suggestionLabel'}>
                                                 <span key={result.id}>{result.title}</span>
-                                                <span>({result.release_date.slice(0, -6)})</span>
+                                                <span>({result.release_date?result.release_date.slice(0,-6):''})</span>
                                             </div>
                                         </Link>
                                     </div>
