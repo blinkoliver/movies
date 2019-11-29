@@ -7,7 +7,11 @@
   transition: all 0.5s;
   box-sizing: border-box;
 }
-
+.Loader{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(51,51,51);
+}
 .Container{
   margin: 0 auto 0 auto;
   width: 1170px;
@@ -15,9 +19,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  text-align: center;
 }
 .App{
   text-align: center;
@@ -30,23 +33,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.TitleBlock{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: nowrap;
-  align-items: center;
-  background-color: darkslategray;
-  color: white;
-}
-.Subtext{
-  display: flex;
-  flex-direction: row;
-}
-.Subtext div{
-  border-right: solid silver 1px;
-  padding: 3px;
-
+.Content{
+  background-color: silver;
 }
 .Content .Container{
   margin: 0 auto 0 auto;
@@ -57,6 +45,115 @@
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
+  background-color: rgb(51,51,51);
+}
+.TitleBlock{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color: rgb(51,51,51);
+  color: white;
+  width: 100%;
+}
+.TitleBar{
+  display: flex;
+  align-self: start;
+  flex-direction: column;
+}
+.TitleBar h1{
+  padding: 6px 0 0 6px;
+  font-weight: normal;
+}
+.TitleBar h1 span{
+  font-weight: 100;
+  color: silver;
+  font-size: x-large;
+}
+
+.Subtext{
+  display: flex;
+  flex-direction: row;
+}
+.Subtext div{
+  border-right: solid silver 1px;
+  margin: 5px 0px 5px 5px;
+  padding-right: 5px;
+  font-size: smaller;
+  color: silver;
+}
+.Subtext div a{
+  color: silver;
+  text-decoration: none;
+}
+.Subtext div a:hover{
+  color: dodgerblue;
+  text-decoration: underline;
+}
+
+.Subtext div:nth-of-type(3){
+  border-right: none;
+}
+.RatingsWrapper{
+  display: flex;
+  flex-direction: row;
+}
+.RatingsWrapper>div{
+  display: flex;
+  flex-direction: column;
+}
+.RatingsWrapper>div div{
+  display: flex;
+  flex-direction: row;
+}
+.RatingsWrapper>div div p:first-child{
+  font-size: xx-large;
+}
+.RatingsWrapper>div div p:nth-of-type(2){
+  display: flex;
+  align-self: flex-end;
+  color: silver;
+}
+.RatingsWrapper>div>p:hover{
+  color: dodgerblue;
+  text-decoration: underline;
+}
+.RatingsWrapper svg{
+  margin-top: 9px;
+}
+.SlateWrapper{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+.SlateWrapper img{
+  padding: 20px;
+}
+.Overview{
+  display: flex;
+  flex-direction: column;
+}
+.Overview h1{
+  color: silver;
+  font-size: x-large;
+  font-weight: lighter;
+  align-self: center;
+  padding: 20px 60px 20px 60px;
+}
+.CastCrew{
+  color: silver;
+  font-size: x-large;
+  font-weight: lighter;
+  padding: 20px 60px 20px 60px;
+}
+.CastCrew div:nth-of-type(3) a{
+  color: silver;
+  text-decoration: none;
+}
+.CastCrew div:nth-of-type(3) a:hover{
+  color: dodgerblue;
+  text-decoration: underline;
 }
 header{
   background: #191919;
@@ -74,17 +171,22 @@ header{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-
-
 }
 .search{
   width: 60%;
   align-self: center;
+  margin-top: 0px;
 }
 .search input{
-  margin: 5px 5px 0 5px;
+  margin: 10px 0 0 0;
   width: 100%;
   height: 30px;
+  border: none;
+  position: relative;
+  right: 0px;
+  bottom: 0px;
+  padding-left: 5px;
+
 }
 
 .personal{
@@ -98,8 +200,6 @@ header{
   display: block;
   width: 100%;
   background-color: white;
-  margin: 0 0 0 5px;
-  padding: 0;
 }
 #suggest a{
   display: flex;
@@ -130,11 +230,11 @@ header{
 }
 
 button{
-  margin: 5px;
+  margin: 12px 5px 5px 5px;
   border: none;
   border-radius:10px;
-  height: 49px;
-  background-color: darkslategray;
+  height: 35px;
+  background-color: rgb(51,51,51);
   width: 100px;
 }
 button:hover{
@@ -147,4 +247,9 @@ button a{
   color: white;
   font-size: 14px;
   text-decoration: none;
+}
+iframe{
+  width: 604px;
+  height: 340px;
+  padding: 20px;
 }

@@ -46,7 +46,7 @@ class App extends React.Component{
               <header>
                   <div className={'Container'}>
                       <div className={'home'}>
-                        <button><Link to={"/"}>Movie-Search</Link></button>
+                        <button><Link to={"/"}>Movie Search</Link></button>
                         <Route exact path={"/"}/>
                       </div>
 
