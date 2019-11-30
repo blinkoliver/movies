@@ -12,7 +12,7 @@ class InformationPage extends React.Component{
          trailers:{},
          cast:[],
          directors:[],
-         writers:[]
+         writers:[],
      };
  }
 
@@ -57,11 +57,15 @@ class InformationPage extends React.Component{
     componentDidUpdate(prevProps) {
         if(this.props.match.params.id!==prevProps.match.params.id){
             this.fetchMovieInfo(this.props.match.params.id);
-            this.fetchTrailerInfo(this.props.match.params.id)
+            this.fetchTrailerInfo(this.props.match.params.id);
+            this.fetchCastCrew(this.props.match.params.id)
         }
     }
 
     render(){
+
+     const genres = this.state.post.genres || [];
+
         if(this.state.loading)
             {return (<Load/>)}
             return(
@@ -76,7 +80,7 @@ class InformationPage extends React.Component{
                                 </div>
                                 <div>
                                     {
-                                        this.state.post.genres.map((el, index) =>{
+                                        genres.map((el, index) =>{
                                             const name = index === this.state.post.genres.length - 1 ? el.name :`${el.name}, `;
                                             return <a href={`genres/${el.id}`} key={el.id}>{name}</a>})
                                     }
@@ -104,12 +108,13 @@ class InformationPage extends React.Component{
                             src={`https://image.tmdb.org/t/p/w200${this.state.post.poster_path}`}
                             alt={this.state.post.original_title}
                         />
+                        {this.state.trailers&&
                         <iframe src={`https://www.youtube.com/embed/${this.state.trailers.key}`}
                                 frameBorder={"0"}
                                 allow={"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"}
                                 allowFullScreen
                                 title={this.state.trailers.id}>
-                        </iframe>
+                        </iframe>}
                     </div>
                     <div className={'Overview'}>
                         <h1>{this.state.post.overview}</h1>
