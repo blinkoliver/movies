@@ -3,6 +3,7 @@ import '../App.css';
 import Input from './Input';
 import InformationPage from './InformationPage'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import Name from "./Name";
 
 class App extends React.Component{
     state = {
@@ -81,6 +82,7 @@ class App extends React.Component{
 
               <div className={'Content'}>
                   <Route path={'/InformationPage/:id'} component={InformationPage}/>
+                  <Route path={'/Name/:credit_id'} component={Name}/>
               </div>
 
               <footer>

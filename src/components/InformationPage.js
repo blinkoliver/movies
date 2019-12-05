@@ -1,6 +1,10 @@
 import React from "react";
 import moment from "moment";
+import 'moment-duration-format'
 import Load from './Load'
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import Name from './Name'
+
 
 
 class InformationPage extends React.Component{
@@ -43,7 +47,7 @@ class InformationPage extends React.Component{
              let writers=post.crew.filter(el=>el.job==='Writer');
              this.setState({writers:writers.map(el=>el.name)});
              this.setState({cast:post.cast});
-             // console.log(this.state.cast)
+             console.log(post)
          })
             }
 
@@ -65,19 +69,21 @@ class InformationPage extends React.Component{
     render(){
 
      const genres = this.state.post.genres || [];
+     const production_countries = this.state.post.production_countries || [];
+
 
         if(this.state.loading)
             {return (<Load/>)}
             return(
+            <Router>
             <div className={'Container'}>
                     <div className={'TitleBlock'}>
                         <div className={'TitleBar'}>
                             <h1>{this.state.post.original_title} <span>({moment(this.state.post.release_date).format('YYYY')})</span></h1>
 
                             <div className={'Subtext'}>
-                                <div>
-                                {moment.utc(moment.duration(this.state.post.runtime, "minutes").asMilliseconds()).format('h:mm').replace(':','h ')+'min'}
-                                </div>
+                                <div>{moment.duration(this.state.post.runtime, 'minutes').format('h:mm').replace(':','h ')+'min'}</div>
+
                                 <div>
                                     {
                                         genres.map((el, index) =>{
@@ -85,9 +91,11 @@ class InformationPage extends React.Component{
                                             return <a href={`genres/${el.id}`} key={el.id}>{name}</a>})
                                     }
                                 </div>
-                                <div>{moment(this.state.post.release_date).format('Do/MMM/YYYY')} ({
-                                    this.state.post.production_countries.map((el, index)=>{
-                                        const name=index===this.state.post.production_countries.length-1?el.name:`${el.name}, `;
+
+                                <div>{moment(this.state.post.release_date).format('Do/MMM/YYYY')}</div>
+                                <div>({
+                                    production_countries.map((el, index)=>{
+                                        const name=index===this.state.post.production_countries.length-1 ? el.name:`${el.name}, `;
                                         return <a href={`production_countries/${el.iso_3166_1}`} key={el.iso_3166_1}>{name}</a>
                                     })
                                 })
@@ -121,11 +129,12 @@ class InformationPage extends React.Component{
                         <div className={'CastCrew'}>
                             <div><b>Director:</b>{this.state.directors}</div>
                             <div><b>Writers:</b>{this.state.writers}</div>
-                            <div><b>Stars:</b>{this.state.cast.map(el=><a key={el.id} href={`cast/${el.id}`}>{el.name}</a>
+                            <div><b>Stars:</b>{this.state.cast.map(el=><Link key={el.id} to={`/Name/${el.credit_id}`}>{el.name}</Link>
                             )}</div>
                         </div>
                     </div>
             </div>
+            </Router>
         )
     }
 }
