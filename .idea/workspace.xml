@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63630c73-f929-4844-a7b6-59e1da5dab33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Name.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movies" beforeDir="false" afterPath="$PROJECT_DIR$/movies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movies/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InformationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InformationPage.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,8 +45,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Name.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            <state relative-caret-position="225">
+              <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -202,7 +196,7 @@
       <workItem from="1574145603171" duration="11771000" />
       <workItem from="1574283933003" duration="19250000" />
       <workItem from="1574770439327" duration="507000" />
-      <workItem from="1574771035016" duration="48821000" />
+      <workItem from="1574771035016" duration="49120000" />
     </task>
     <task id="LOCAL-00001" summary="ne pashet perehod po kliku">
       <created>1572638214140</created>
@@ -222,7 +216,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149727000" />
+    <option name="totallyTimeSpent" value="150026000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -426,8 +420,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Name.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        <state relative-caret-position="225">
+          <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
         </state>
       </provider>
     </entry>
