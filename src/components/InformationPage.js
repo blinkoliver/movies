@@ -24,7 +24,7 @@ class InformationPage extends React.Component{
             .then(information=>information.json())
         .then(post=>{
                 this.setState({post:post}, ()=>this.setState({loading:false}));
-                // console.log(this.state.post)
+                console.log(this.state.post)
             }
         )
  }
@@ -86,7 +86,7 @@ class InformationPage extends React.Component{
                                     {
                                         genres.map((el, index) =>{
                                             const name = index === this.state.post.genres.length - 1 ? el.name :`${el.name}, `;
-                                            return <Link to={`/Genres/${el.name}`} key={el.id}>{name}</Link>})
+                                            return <Link to={`/Genres/${el.id}`} key={el.id}>{name}</Link>})
                                     }
                                 </div>
 

@@ -84,7 +84,7 @@ class App extends React.Component{
               <div className={'Content'}>
                   <Route path={'/InformationPage/:id'} component={InformationPage}/>
                   <Route path={'/Name/:id'} component={Name}/>
-                  <Route path={'/Genres/"id'} component={Genres}/>
+                  <Route path={'/Genres/:id'} component={Genres}/>
               </div>
 
               <footer>
