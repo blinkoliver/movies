@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63630c73-f929-4844-a7b6-59e1da5dab33" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/movies" beforeDir="false" afterPath="$PROJECT_DIR$/movies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movies/package-lock.json" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Genres.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InformationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InformationPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Name.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Name.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -14,13 +19,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="movie-search" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="84" column="69" lean-forward="true" selection-start-line="84" selection-end-line="85" />
+            <state relative-caret-position="693">
+              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -31,22 +39,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/InformationPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="127" column="59" lean-forward="true" selection-start-line="127" selection-start-column="59" selection-end-line="127" selection-end-column="59" />
+            <state relative-caret-position="-919">
+              <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <marker date="1575545730110" expanded="true" signature="1810:1840" ph="..." />
-                <marker date="1575545730110" expanded="true" signature="5220:5603" ph="..." />
+                <marker date="1577808775880" expanded="true" signature="1752:1785" ph="..." />
+                <marker date="1577808775880" expanded="true" signature="5151:5534" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Genres.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Name.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
+            <state relative-caret-position="-450">
+              <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <marker date="1577646635307" expanded="true" signature="1080:1121" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="98" column="28" lean-forward="true" selection-start-line="98" selection-start-column="28" selection-end-line="98" selection-end-column="28" />
+            <state relative-caret-position="208">
+              <caret line="217" column="32" lean-forward="true" selection-start-line="217" selection-start-column="32" selection-end-line="217" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -76,6 +100,9 @@
       <find>decora</find>
       <find>conso</find>
       <find>informatio</find>
+      <find>titl</find>
+      <find>img</find>
+      <find>start</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -90,9 +117,10 @@
         <option value="$PROJECT_DIR$/src/components/Input.js" />
         <option value="$PROJECT_DIR$/src/components/Load.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
+        <option value="$PROJECT_DIR$/src/components/Name.js" />
         <option value="$PROJECT_DIR$/src/components/App.js" />
         <option value="$PROJECT_DIR$/src/components/InformationPage.js" />
-        <option value="$PROJECT_DIR$/src/components/Name.js" />
+        <option value="$PROJECT_DIR$/src/components/Genres.js" />
       </list>
     </option>
   </component>
@@ -154,7 +182,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.externalDependencies" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -172,6 +200,23 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -196,7 +241,9 @@
       <workItem from="1574145603171" duration="11771000" />
       <workItem from="1574283933003" duration="19250000" />
       <workItem from="1574770439327" duration="507000" />
-      <workItem from="1574771035016" duration="49120000" />
+      <workItem from="1574771035016" duration="52497000" />
+      <workItem from="1576482887699" duration="1549000" />
+      <workItem from="1577530844890" duration="14202000" />
     </task>
     <task id="LOCAL-00001" summary="ne pashet perehod po kliku">
       <created>1572638214140</created>
@@ -216,16 +263,16 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150026000" />
+    <option name="totallyTimeSpent" value="169154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49863014" weight="0.14455917" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49863014" visible="true" weight="0.14455917" />
       <window_info id="Structure" order="1" sideWeight="0.50136983" side_tool="true" weight="0.13899921" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="npm" order="2" side_tool="true" weight="0.32962668" />
+      <window_info id="Favorites" order="3" side_tool="true" weight="0.32962668" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32876712" />
@@ -236,7 +283,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32876712" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.48630136" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.2547945" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -306,6 +353,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/movies" />
+    </ignored-roots>
     <MESSAGE value="ne pashet perehod po kliku" />
     <MESSAGE value="padaet release_date.slice" />
     <option name="LAST_COMMIT_MESSAGE" value="padaet release_date.slice" />
@@ -391,15 +441,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="98" column="28" lean-forward="true" selection-start-line="98" selection-start-column="28" selection-end-line="98" selection-end-column="28" />
+        <state relative-caret-position="208">
+          <caret line="217" column="32" lean-forward="true" selection-start-line="217" selection-start-column="32" selection-end-line="217" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Name.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1577646635307" expanded="true" signature="1080:1121" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="84" column="69" lean-forward="true" selection-start-line="84" selection-end-line="85" />
+        <state relative-caret-position="693">
+          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -408,20 +469,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/InformationPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="127" column="59" lean-forward="true" selection-start-line="127" selection-start-column="59" selection-end-line="127" selection-end-column="59" />
+        <state relative-caret-position="-919">
+          <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1575545730110" expanded="true" signature="1810:1840" ph="..." />
-            <marker date="1575545730110" expanded="true" signature="5220:5603" ph="..." />
+            <marker date="1577808775880" expanded="true" signature="1752:1785" ph="..." />
+            <marker date="1577808775880" expanded="true" signature="5151:5534" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Name.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Genres.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
+        <state relative-caret-position="390">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

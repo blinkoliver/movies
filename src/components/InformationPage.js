@@ -2,8 +2,7 @@ import React from "react";
 import moment from "moment";
 import 'moment-duration-format'
 import Load from './Load'
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import Name from './Name'
+import {Link} from "react-router-dom";
 
 
 
@@ -47,7 +46,7 @@ class InformationPage extends React.Component{
              let writers=post.crew.filter(el=>el.job==='Writer');
              this.setState({writers:writers.map(el=>el.name)});
              this.setState({cast:post.cast});
-             console.log(post)
+             // console.log(post)
          })
             }
 
@@ -75,7 +74,6 @@ class InformationPage extends React.Component{
         if(this.state.loading)
             {return (<Load/>)}
             return(
-            <Router>
             <div className={'Container'}>
                     <div className={'TitleBlock'}>
                         <div className={'TitleBar'}>
@@ -88,7 +86,7 @@ class InformationPage extends React.Component{
                                     {
                                         genres.map((el, index) =>{
                                             const name = index === this.state.post.genres.length - 1 ? el.name :`${el.name}, `;
-                                            return <a href={`genres/${el.id}`} key={el.id}>{name}</a>})
+                                            return <Link to={`/Genres/${el.name}`} key={el.id}>{name}</Link>})
                                     }
                                 </div>
 
@@ -127,14 +125,16 @@ class InformationPage extends React.Component{
                     <div className={'Overview'}>
                         <h1>{this.state.post.overview}</h1>
                         <div className={'CastCrew'}>
-                            <div><b>Director:</b>{this.state.directors}</div>
-                            <div><b>Writers:</b>{this.state.writers}</div>
-                            <div><b>Stars:</b>{this.state.cast.map(el=><Link key={el.id} to={`/Name/${el.credit_id}`}>{el.name}</Link>
+                            <div><b>Director: </b>{this.state.directors}</div>
+                            <div><b>Writers: </b>{this.state.writers}</div>
+                            <div><b>Stars: </b>{this.state.cast.map((el, index)=>{
+                                const name=index===this.state.cast.length-1 ? el.name:`${el.name}, `;
+                                return <Link key={el.id} to={`/Name/${el.id}`}>{name}</Link>
+                                }
                             )}</div>
                         </div>
                     </div>
             </div>
-            </Router>
         )
     }
 }

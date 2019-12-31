@@ -5,7 +5,6 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   transition: all 0.5s;
-  box-sizing: border-box;
 }
 .Loader{
   width: 100%;
@@ -20,7 +19,11 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: flex-start;
+  color:silver;
+}
+.Container>img{
+  margin: 6px;
 }
 .App{
   text-align: center;
@@ -44,7 +47,7 @@
   flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgb(51,51,51);
 }
 .TitleBlock{
@@ -59,11 +62,15 @@
 }
 .TitleBar{
   display: flex;
-  align-self: start;
+  align-self: flex-start;
   flex-direction: column;
 }
 .TitleBar h1{
   padding: 6px 0 0 6px;
+  font-weight: normal;
+}
+.TitleBar h5{
+  padding: 5px 0 0 6px;
   font-weight: normal;
 }
 .TitleBar h1 span{
@@ -71,7 +78,6 @@
   color: silver;
   font-size: x-large;
 }
-
 .Subtext{
   display: flex;
   flex-direction: row;
@@ -199,6 +205,41 @@ header{
   align-self: flex-start;
   flex-direction: row;
   justify-content: space-around;
+}
+.Bio{
+  margin: 5px;
+}
+.Born{
+  margin: 5px;
+}
+.KnownFor{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 5px;
+}
+.KnownForItems{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.KnownForItems div{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 15px;
+}
+.KnownForItems div a{
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: lightseagreen;
+}
+.KnownForItems div a:hover{
+  display: flex;
+  flex-direction: column;
+  text-decoration: underline;
+  color: lightseagreen;
 }
 #suggestSearch{
   display: block;
