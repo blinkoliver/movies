@@ -16,6 +16,7 @@ class InformationPage extends React.Component{
          cast:[],
          directors:[],
          writers:[],
+         recommendations:[],
      };
  }
 
@@ -24,7 +25,7 @@ class InformationPage extends React.Component{
             .then(information=>information.json())
         .then(post=>{
                 this.setState({post:post}, ()=>this.setState({loading:false}));
-                console.log(this.state.post)
+                // console.log(this.state.post)
             }
         )
  }
@@ -46,22 +47,33 @@ class InformationPage extends React.Component{
              let writers=post.crew.filter(el=>el.job==='Writer');
              this.setState({writers:writers.map(el=>el.name)});
              this.setState({cast:post.cast});
-             // console.log(post)
+             console.log(directors)
          })
             }
+    fetchRecommendation(){
+     fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}/recommendations?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US&page=1`)
+         .then(information=>information.json())
+         .then(post=>{
+             let results = post.results;
+             this.setState({recommendations:results.slice(0,4)}, ()=>this.setState({loading:false}));
+             // console.log(this.state.recommendations)
+         })
+    }
 
 
     componentDidMount() {
         this.fetchMovieInfo();
         this.fetchTrailerInfo();
         this.fetchCastCrew();
+        this.fetchRecommendation()
     }
 
     componentDidUpdate(prevProps) {
         if(this.props.match.params.id!==prevProps.match.params.id){
             this.fetchMovieInfo(this.props.match.params.id);
             this.fetchTrailerInfo(this.props.match.params.id);
-            this.fetchCastCrew(this.props.match.params.id)
+            this.fetchCastCrew(this.props.match.params.id);
+            this.fetchRecommendation(this.props.match.params.id)
         }
     }
 
@@ -77,7 +89,13 @@ class InformationPage extends React.Component{
             <div className={'Container'}>
                     <div className={'TitleBlock'}>
                         <div className={'TitleBar'}>
-                            <h1>{this.state.post.original_title} <span>({moment(this.state.post.release_date).format('YYYY')})</span></h1>
+                            <h1>{this.state.post.original_title+' '}
+                                <span>(
+                                <Link to={`/Year/${moment(this.state.post.release_date).format('YYYY')}`}>
+                                {moment(this.state.post.release_date).format('YYYY')}
+                                </Link>)
+                                </span>
+                            </h1>
 
                             <div className={'Subtext'}>
                                 <div>{moment.duration(this.state.post.runtime, 'minutes').format('h:mm').replace(':','h ')+'min'}</div>
@@ -89,12 +107,11 @@ class InformationPage extends React.Component{
                                             return <Link to={`/Genres/${el.id}`} key={el.id}>{name}</Link>})
                                     }
                                 </div>
-
-                                <div>{moment(this.state.post.release_date).format('Do/MMM/YYYY')}</div>
+                                    <div>{moment(this.state.post.release_date).format('Do/MMM/YYYY')}</div>
                                 <div>({
                                     production_countries.map((el, index)=>{
                                         const name=index===this.state.post.production_countries.length-1 ? el.name:`${el.name}, `;
-                                        return <a href={`production_countries/${el.iso_3166_1}`} key={el.iso_3166_1}>{name}</a>
+                                        return <span key={el.iso_3166_1}>{name}</span>
                                     })
                                 })
                                 </div>
@@ -108,7 +125,6 @@ class InformationPage extends React.Component{
                             </div>
                         </div>
                     </div>
-
                     <div className={'SlateWrapper'}>
                         <img
                             src={`https://image.tmdb.org/t/p/w200${this.state.post.poster_path}`}
@@ -125,13 +141,32 @@ class InformationPage extends React.Component{
                     <div className={'Overview'}>
                         <h1>{this.state.post.overview}</h1>
                         <div className={'CastCrew'}>
-                            <div><b>Director: </b>{this.state.directors}</div>
+                            <div><b>Director: </b>{this.state.directors.map((el, index)=>{
+                                const name=index===this.state.directors.length-1 ? el:`${el}, `;
+                                return <Link key={el} to={`/Name/${el}`}>{name}</Link>
+                            })}</div>
                             <div><b>Writers: </b>{this.state.writers}</div>
                             <div><b>Stars: </b>{this.state.cast.map((el, index)=>{
                                 const name=index===this.state.cast.length-1 ? el.name:`${el.name}, `;
                                 return <Link key={el.id} to={`/Name/${el.id}`}>{name}</Link>
                                 }
                             )}</div>
+                        </div>
+                    </div>
+                    <div className={'KnownFor'} style={{marginLeft:'60px'}}>
+                        <h3><b>Recommendations</b></h3>
+                        <div className={'KnownForItems'}>
+                            {this.state.recommendations.map(result=>
+                                <div key={result.id}>
+                                    <Link key={result.id} to={`/InformationPage/${result.id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w200${result.poster_path}`}
+                                             alt={result.id}
+                                        />
+                                        {result.title}
+                                    </Link>
+                                    <h5>({moment(result.release_date).format('YYYY')})</h5>
+                                </div>
+                            )}
                         </div>
                     </div>
             </div>

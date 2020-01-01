@@ -5,6 +5,7 @@ import InformationPage from './InformationPage'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import Name from "./Name";
 import Genres from "./Genres";
+import Year from "./Year"
 
 class App extends React.Component{
     state = {
@@ -13,7 +14,8 @@ class App extends React.Component{
         results:[],
         inputIsFocused:true||false,
         error:true||false,
-        loading:true
+        loading:true,
+        post:[]
     };
 
     handleInput(event){
@@ -41,6 +43,21 @@ class App extends React.Component{
         this.setState({inputIsFocused:true});
         // document.getElementById("suggestSearch").style.display='block';
     };
+
+    fetchTrendingFilm(){
+        fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=6ed6e56030be8bc7d1821d5b302e302e`)
+            .then(information=>information.json())
+            .then(post=>{
+                    this.setState({post:post.results.slice(0,4)}, ()=>this.setState({loading:false}));
+                    // console.log(this.state.post)
+                }
+            )
+    }
+
+    componentDidMount() {
+        this.fetchTrendingFilm()
+    }
+
 
   render(){
       return (
@@ -85,6 +102,23 @@ class App extends React.Component{
                   <Route path={'/InformationPage/:id'} component={InformationPage}/>
                   <Route path={'/Name/:id'} component={Name}/>
                   <Route path={'/Genres/:id'} component={Genres}/>
+                  <Route path={'/Year/:id'} component={Year}/>
+                  <div className={'Container'}>
+                      <div><h1>Trending movies this week</h1></div>
+                      <div className={'KnownForItems'} style={{flexDirection: 'column'}}>
+                          {this.state.post.map(result=>
+                              <div key={result.id} style={{flexDirection: 'row'}}>
+                                  <Link key={result.id} to={`/InformationPage/${result.id}`}>
+                                      <img src={`https://image.tmdb.org/t/p/w200${result.poster_path}`}
+                                           alt={result.id}
+                                      />
+                                      {result.original_title}
+                                  </Link>
+                                  <h2>{result.overview}</h2>
+                              </div>
+                          )}
+                      </div>
+                  </div>
               </div>
 
               <footer>

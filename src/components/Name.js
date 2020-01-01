@@ -10,7 +10,8 @@ class Name extends React.Component{
         this.state={
             post:[],
             loading:true,
-            movies:[]
+            movies:[],
+            works:[]
         };
     };
 
@@ -29,7 +30,9 @@ class Name extends React.Component{
             .then(information=>information.json())
             .then(post=>{
                 this.setState({movies:post.cast.slice(0,4)}, ()=>this.setState({loading:false}));
-                // console.log(post.cast)
+                this.setState({works:post.crew.slice(0,4)}, ()=>this.setState({loading:false}));
+
+                console.log(this.state.works)
             })
     }
 
