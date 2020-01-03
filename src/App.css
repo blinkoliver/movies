@@ -232,6 +232,7 @@ header{
   margin-left: 5px;
 }
 
+
 .KnownForItems{
   display:flex;
   flex-direction: row;
@@ -311,4 +312,14 @@ iframe{
   width: 604px;
   height: 340px;
   padding: 20px;
+}
+footer{
+    margin: 0 auto 0 auto;
+    width: 1170px;
+    padding: 0px 1px 1px 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }

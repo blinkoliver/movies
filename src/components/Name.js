@@ -32,7 +32,7 @@ class Name extends React.Component{
                 this.setState({movies:post.cast.slice(0,4)}, ()=>this.setState({loading:false}));
                 this.setState({works:post.crew.slice(0,4)}, ()=>this.setState({loading:false}));
 
-                console.log(this.state.works)
+                // console.log(this.state.works)
             })
     }
 

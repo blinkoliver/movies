@@ -103,8 +103,11 @@ class App extends React.Component{
                   <Route path={'/Name/:id'} component={Name}/>
                   <Route path={'/Genres/:id'} component={Genres}/>
                   <Route path={'/Year/:id'} component={Year}/>
+              </div>
+
+              <footer>
                   <div className={'Container'}>
-                      <div><h1>Trending movies this week</h1></div>
+                      <div><h1 style={{color:'darkslategray'}}>Trending movies this week</h1></div>
                       <div className={'KnownForItems'} style={{flexDirection: 'column'}}>
                           {this.state.post.map(result=>
                               <div key={result.id} style={{flexDirection: 'row'}}>
@@ -114,15 +117,11 @@ class App extends React.Component{
                                       />
                                       {result.original_title}
                                   </Link>
-                                  <h2>{result.overview}</h2>
+                                  <h2 style={{color:'darkslategray'}}>{result.overview}</h2>
                               </div>
                           )}
                       </div>
                   </div>
-              </div>
-
-              <footer>
-
               </footer>
           </Router>
       )

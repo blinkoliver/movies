@@ -35,19 +35,17 @@ class InformationPage extends React.Component{
          .then(post=>{
              let results = post.results;
              this.setState({trailers:results[0]}, ()=>this.setState({loading:false}));
-             // console.log(results)
+             // console.log(this.state.trailers)
          }
          )}
      fetchCastCrew(){
      fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}/credits?api_key=6ed6e56030be8bc7d1821d5b302e302e`)
          .then(information=>information.json())
          .then(post=>{
-             let directors = post.crew.filter(el=>el.job==='Director');
-             this.setState({directors:directors.map(el=>el.name)});
-             let writers=post.crew.filter(el=>el.job==='Writer');
-             this.setState({writers:writers.map(el=>el.name)});
+             this.setState({directors:post.crew.filter(el=>el.job==='Director')});
+             this.setState({writers:post.crew.filter(el=>el.department==='Writing').slice(0,4)});
              this.setState({cast:post.cast});
-             console.log(directors)
+             console.log(this.state.writers)
          })
             }
     fetchRecommendation(){
@@ -141,18 +139,27 @@ class InformationPage extends React.Component{
                     <div className={'Overview'}>
                         <h1>{this.state.post.overview}</h1>
                         <div className={'CastCrew'}>
+                            {this.state.directors===[]&&
                             <div><b>Director: </b>{this.state.directors.map((el, index)=>{
-                                const name=index===this.state.directors.length-1 ? el:`${el}, `;
-                                return <Link key={el} to={`/Name/${el}`}>{name}</Link>
-                            })}</div>
-                            <div><b>Writers: </b>{this.state.writers}</div>
+                                const name=index===this.state.directors.length-1 ? el.name:`${el.name}, `;
+                                return <Link key={el.id} to={`/Name/${el.id}`}>{name}</Link>
+                            })}
+                            </div>}
+                            {this.state.writers===[]&&
+                            <div><b>Writers: </b>{this.state.writers.map((el, index)=>{
+                                const name=index===this.state.writers.length-1 ? el.name: `${el.name}, `;
+                                return <Link key={el.id} to={`/Name/${el.id}`}>{name}</Link>
+                            })}
+                            </div>}
+                            {this.state.cast===[]&&
                             <div><b>Stars: </b>{this.state.cast.map((el, index)=>{
                                 const name=index===this.state.cast.length-1 ? el.name:`${el.name}, `;
                                 return <Link key={el.id} to={`/Name/${el.id}`}>{name}</Link>
                                 }
-                            )}</div>
+                            )}</div>}
                         </div>
                     </div>
+                {this.state.recommendations===[]&&
                     <div className={'KnownFor'} style={{marginLeft:'60px'}}>
                         <h3><b>Recommendations</b></h3>
                         <div className={'KnownForItems'}>
@@ -168,8 +175,8 @@ class InformationPage extends React.Component{
                                 </div>
                             )}
                         </div>
+                    </div>}
                     </div>
-            </div>
         )
     }
 }
