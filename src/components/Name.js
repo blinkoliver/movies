@@ -58,17 +58,21 @@ class Name extends React.Component{
                <div className={'TitleBar'}>
                         <h1>{this.state.post.name}</h1>
                        <h5>{this.state.post.known_for_department}</h5>
-               </div>
+                   </div>
+                {this.state.post.profile_path&&
                 <img
                     src={`https://image.tmdb.org/t/p/w200${this.state.post.profile_path}`}
                     alt={this.state.post.name}
-                />
+                />}
                 <div className={'Bio'}>{this.state.post.biography}</div>
+                {this.state.post.birthday&&
                 <div className={'Born'}><b>Born: </b><span>{moment(this.state.post.birthday).format('MMMM D, YYYY')} </span>
                      in
                     <span> {this.state.post.place_of_birth}</span>
-                </div>
-                <div className={'KnownFor'}>
+                </div>}
+
+                {this.state.movies.length!==0&&
+                    <div className={'KnownFor'}>
                     <h3><b>Known For</b></h3>
                     <div className={'KnownForItems'}>
                         {this.state.movies.map(result=>
@@ -84,7 +88,8 @@ class Name extends React.Component{
                             </div>
                         )}
                     </div>
-                </div>
+                </div>}
+
             </div>
         )
     }

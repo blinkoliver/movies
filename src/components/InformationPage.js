@@ -45,7 +45,7 @@ class InformationPage extends React.Component{
              this.setState({directors:post.crew.filter(el=>el.job==='Director')});
              this.setState({writers:post.crew.filter(el=>el.department==='Writing').slice(0,4)});
              this.setState({cast:post.cast});
-             console.log(this.state.writers)
+             // console.log(this.state.writers)
          })
             }
     fetchRecommendation(){
@@ -105,14 +105,16 @@ class InformationPage extends React.Component{
                                             return <Link to={`/Genres/${el.id}`} key={el.id}>{name}</Link>})
                                     }
                                 </div>
-                                    <div>{moment(this.state.post.release_date).format('Do/MMM/YYYY')}</div>
-                                <div>({
+                                <div>{moment(this.state.post.release_date).format('Do/MMM/YYYY')}</div>
+
+                                    <div>({
                                     production_countries.map((el, index)=>{
                                         const name=index===this.state.post.production_countries.length-1 ? el.name:`${el.name}, `;
                                         return <span key={el.iso_3166_1}>{name}</span>
                                     })
                                 })
                                 </div>
+
                             </div>
                         </div>
                         <div className={'RatingsWrapper'}>
@@ -139,28 +141,35 @@ class InformationPage extends React.Component{
                     <div className={'Overview'}>
                         <h1>{this.state.post.overview}</h1>
                         <div className={'CastCrew'}>
-                            {this.state.directors===[]&&
-                            <div><b>Director: </b>{this.state.directors.map((el, index)=>{
+
+                            {this.state.directors.length!==0&&
+                                <div><b>Director: </b>{this.state.directors.map((el, index)=>{
                                 const name=index===this.state.directors.length-1 ? el.name:`${el.name}, `;
                                 return <Link key={el.id} to={`/Name/${el.id}`}>{name}</Link>
                             })}
                             </div>}
-                            {this.state.writers===[]&&
-                            <div><b>Writers: </b>{this.state.writers.map((el, index)=>{
+
+                            {this.state.writers.length!==0&&
+                                <div><b>Writers: </b>{this.state.writers.map((el, index)=>{
                                 const name=index===this.state.writers.length-1 ? el.name: `${el.name}, `;
                                 return <Link key={el.id} to={`/Name/${el.id}`}>{name}</Link>
                             })}
                             </div>}
-                            {this.state.cast===[]&&
+
+
+                            {this.state.cast.length!==0&&
                             <div><b>Stars: </b>{this.state.cast.map((el, index)=>{
                                 const name=index===this.state.cast.length-1 ? el.name:`${el.name}, `;
                                 return <Link key={el.id} to={`/Name/${el.id}`}>{name}</Link>
                                 }
                             )}</div>}
+
+
                         </div>
                     </div>
-                {this.state.recommendations===[]&&
-                    <div className={'KnownFor'} style={{marginLeft:'60px'}}>
+
+                {this.state.recommendations.length!==0&&
+                <div className={'KnownFor'} style={{marginLeft:'60px'}}>
                         <h3><b>Recommendations</b></h3>
                         <div className={'KnownForItems'}>
                             {this.state.recommendations.map(result=>
@@ -175,7 +184,9 @@ class InformationPage extends React.Component{
                                 </div>
                             )}
                         </div>
-                    </div>}
+                    </div>
+                    }
+
                     </div>
         )
     }
