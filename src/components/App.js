@@ -52,7 +52,7 @@ class App extends React.Component{
               <header>
                   <div className={'Container'}>
                       <div className={'home'}>
-                        <button><Link to={"/Home"}>Movie Search</Link></button>
+                        <button><Link to={"/"}>Movie Search</Link></button>
                       </div>
 
                       <div className={'search'}>
@@ -83,9 +83,10 @@ class App extends React.Component{
                       </div>
                   </div>
               </header>
+              <Route exact path={"/"} to component={Home}/>
+
 
               <div className={'Content'}>
-                  <Route exact path={"/Home"} to component={Home}/>
                   <Route path={'/InformationPage/:id'} component={InformationPage}/>
                   <Route path={'/Name/:id'} component={Name}/>
                   <Route path={'/Genres/:id'} component={Genres}/>
