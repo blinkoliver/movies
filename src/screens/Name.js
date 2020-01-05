@@ -1,6 +1,6 @@
 import React from 'react';
-import Load from "./Load";
-import moment from "moment";
+import Load from "../components/Load";
+import moment from "moment/moment";
 import {Link} from "react-router-dom";
 
 

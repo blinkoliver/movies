@@ -1,5 +1,5 @@
 import React from "react";
-import Load from './Load'
+import Load from '../components/Load'
 import {Link} from "react-router-dom";
 
 class Year extends React.Component {

@@ -1,11 +1,11 @@
 import React from 'react';
 import '../App.css';
 import Input from './Input';
-import InformationPage from './InformationPage'
+import InformationPage from '../screens/InformationPage'
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import Name from "./Name";
-import Genres from "./Genres";
-import Year from "./Year"
+import Name from "../screens/Name";
+import Genres from "../screens/Genres";
+import Year from "../screens/Year"
 import Home from "./Home"
 
 class App extends React.Component{

@@ -1,5 +1,5 @@
 import React from "react";
-import moment from "moment";
+import moment from "moment/moment";
 import 'moment-duration-format'
 import Load from './Load'
 import {Link} from "react-router-dom";
