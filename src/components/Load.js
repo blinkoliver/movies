@@ -1,10 +1,13 @@
 import React from "react";
 import "../App.css";
+import logo from "../logo.svg";
 
-class Load extends React.Component {
-  render() {
-    return <div className={"Loader"}></div>;
-  }
+function Load() {
+  return (
+    <div className={"Loader"}>
+      <img src={logo} width="200" height="200" alt="logo"></img>
+    </div>
+  );
 }
 
 export default Load;

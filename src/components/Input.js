@@ -1,18 +1,24 @@
 import React from "react";
 import "../App.css";
 
-class Input extends React.Component {
-  render() {
-    return (
-      <input
-        id={"focus"}
-        onChange={this.props.onChange}
-        onBlur={this.props.onBlur}
-        onFocus={this.props.onFocus}
-        placeholder={"  Find Movies..."}
-      />
-    );
-  }
-}
+// const Input = props => (
+//   <input
+//     id={"focus"}
+//     onChange={props.onChange}
+//     onBlur={props.onBlur}
+//     onFocus={props.onFocus}
+//     placeholder={"  Find Movies..."}
+//   />
+// );
+
+const Input = ({ onChange, onBlur, onFocus }) => (
+  <input
+    onChange={onChange}
+    onBlur={onBlur}
+    onFocus={onFocus}
+    id={"focus"}
+    placeholder={"  Find Movies..."}
+  />
+);
 
 export default Input;

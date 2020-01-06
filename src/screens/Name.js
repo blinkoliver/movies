@@ -2,6 +2,7 @@ import React from "react";
 import Load from "../components/Load";
 import moment from "moment/moment";
 import { Link } from "react-router-dom";
+import { Fetch } from "../utils";
 
 class Name extends React.Component {
   constructor(props) {
@@ -15,31 +16,27 @@ class Name extends React.Component {
   }
 
   fetchPeopleInfo() {
-    fetch(
+    Fetch(
       `https://api.themoviedb.org/3/person/${this.props.match.params.id}?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US`
-    )
-      .then(information => information.json())
-      .then(post => {
-        this.setState({ post: post }, () => this.setState({ loading: false }));
-        // console.log(this.state.post)
-      });
+    ).then(post => {
+      this.setState({ post: post }, () => this.setState({ loading: false }));
+      // console.log(this.state.post)
+    });
   }
 
   fetchMovieInfo() {
-    fetch(
+    Fetch(
       `https://api.themoviedb.org/3/person/${this.props.match.params.id}/movie_credits?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US`
-    )
-      .then(information => information.json())
-      .then(post => {
-        this.setState({ movies: post.cast.slice(0, 4) }, () =>
-          this.setState({ loading: false })
-        );
-        this.setState({ works: post.crew.slice(0, 4) }, () =>
-          this.setState({ loading: false })
-        );
+    ).then(post => {
+      this.setState({ movies: post.cast.slice(0, 4) }, () =>
+        this.setState({ loading: false })
+      );
+      this.setState({ works: post.crew.slice(0, 4) }, () =>
+        this.setState({ loading: false })
+      );
 
-        // console.log(this.state.works)
-      });
+      // console.log(this.state.works)
+    });
   }
 
   componentDidMount() {

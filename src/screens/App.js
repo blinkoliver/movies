@@ -7,6 +7,7 @@ import Name from "../screens/Name";
 import Genres from "../screens/Genres";
 import Year from "../screens/Year";
 import Home from "./Home";
+import { Fetch } from "../utils";
 
 class App extends React.Component {
   state = {
@@ -23,10 +24,9 @@ class App extends React.Component {
     let value = event.target.value;
     this.setState({ inputValue: value }, () => {
       if (value.length > 0) {
-        fetch(
+        Fetch(
           `https://api.themoviedb.org/3/search/movie?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US&query=${this.state.inputValue}&page=1&include_adult=false`
         )
-          .then(information => information.json())
           .then(posts => {
             let results = posts.results;
             this.setState({ results: results });

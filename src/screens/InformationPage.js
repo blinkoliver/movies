@@ -3,6 +3,7 @@ import moment from "moment/moment";
 import "moment-duration-format";
 import Load from "../components/Load";
 import { Link } from "react-router-dom";
+import { Fetch } from "../utils";
 
 class InformationPage extends React.Component {
   constructor(props) {
@@ -19,58 +20,50 @@ class InformationPage extends React.Component {
   }
 
   fetchMovieInfo() {
-    fetch(
+    Fetch(
       `https://api.themoviedb.org/3/movie/${this.props.match.params.id}?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US`
-    )
-      .then(information => information.json())
-      .then(post => {
-        this.setState({ post: post }, () => this.setState({ loading: false }));
-        // console.log(this.state.post)
-      });
+    ).then(post => {
+      this.setState({ post: post }, () => this.setState({ loading: false }));
+      // console.log(this.state.post)
+    });
   }
+
   fetchTrailerInfo() {
-    fetch(
+    Fetch(
       `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/videos?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US`
-    )
-      .then(information => information.json())
-      .then(post => {
-        let results = post.results;
-        this.setState({ trailers: results[0] }, () =>
-          this.setState({ loading: false })
-        );
-        // console.log(this.state.trailers)
-      });
+    ).then(post => {
+      let results = post.results;
+      this.setState({ trailers: results[0] }, () =>
+        this.setState({ loading: false })
+      );
+      // console.log(this.state.trailers)
+    });
   }
+
   fetchCastCrew() {
-    fetch(
+    Fetch(
       `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/credits?api_key=6ed6e56030be8bc7d1821d5b302e302e`
-    )
-      .then(information => information.json())
-      .then(post => {
-        this.setState({
-          directors: post.crew.filter(el => el.job === "Director")
-        });
-        this.setState({
-          writers: post.crew
-            .filter(el => el.department === "Writing")
-            .slice(0, 4)
-        });
-        this.setState({ cast: post.cast });
-        // console.log(this.state.writers)
+    ).then(post => {
+      this.setState({
+        directors: post.crew.filter(el => el.job === "Director")
       });
+      this.setState({
+        writers: post.crew.filter(el => el.department === "Writing").slice(0, 4)
+      });
+      this.setState({ cast: post.cast });
+      // console.log(this.state.writers)
+    });
   }
   fetchRecommendation() {
-    fetch(
+    Fetch(
       `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/recommendations?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US&page=1`
-    )
-      .then(information => information.json())
-      .then(post => {
-        let results = post.results;
-        this.setState({ recommendations: results.slice(0, 4) }, () =>
-          this.setState({ loading: false })
-        );
-        // console.log(this.state.recommendations)
-      });
+    ).then(post => {
+      let results = post.results;
+      this.setState({ recommendations: results.slice(0, 4) }, () =>
+        this.setState({ loading: false })
+      );
+      // console.log(this.state.recommendations)
+    });
   }
 
   componentDidMount() {
