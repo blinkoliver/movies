@@ -66,6 +66,9 @@
   color: white;
   width: 100%;
 }
+.TitleBlock svg:hover{
+  fill:blue
+}
 .TitleBar{
   display: flex;
   align-self: flex-start;
@@ -256,6 +259,15 @@ header{
   text-decoration: underline;
   color: lightseagreen;
 }
+.KnownForItems div button {
+  position: relative;
+  right: 40px;
+  background-color: silver;
+  margin: 2px 2px 2px 0px;
+  border-radius: 5px;
+  height: 25px;
+  width: 72px;
+}
 #suggestSearch{
   display: block;
   width: 100%;
@@ -300,7 +312,6 @@ button{
 button:hover{
   background-color: gray;
 }
-
 button a{
   margin: 3px;
   padding: 3px;

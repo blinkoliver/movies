@@ -7,6 +7,7 @@ import Name from "../screens/Name";
 import Genres from "../screens/Genres";
 import Year from "../screens/Year";
 import Home from "./Home";
+import Watchlist from "../screens/Watchlist";
 import { Fetch } from "../utils";
 
 class App extends React.Component {
@@ -30,7 +31,7 @@ class App extends React.Component {
           .then(posts => {
             let results = posts.results;
             this.setState({ results: results });
-            // console.log(results)
+            console.log(results);
           })
           .catch(this.setState({ error: true }));
       }
@@ -40,7 +41,7 @@ class App extends React.Component {
   onBlur = () => {
     setTimeout(() => {
       this.setState({ inputIsFocused: false });
-    }, [500]);
+    }, 500);
     // document.getElementById("suggestSearch").style.display='none';
   };
   onFocus = () => {
@@ -96,7 +97,7 @@ class App extends React.Component {
 
             <div className={"personal"}>
               <button>
-                <Link to={"/Cabinet"}>Sign In</Link>
+                <Link to={"/Watchlist"}>Watchlist</Link>
               </button>
             </div>
           </div>
@@ -108,6 +109,7 @@ class App extends React.Component {
           <Route path={"/Name/:id"} component={Name} />
           <Route path={"/Genres/:id"} component={Genres} />
           <Route path={"/Year/:id"} component={Year} />
+          <Route path={"/Watchlist"} component={Watchlist} />
         </div>
 
         <footer></footer>
