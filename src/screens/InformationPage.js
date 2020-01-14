@@ -94,6 +94,7 @@ class InformationPage extends React.Component {
       <div className={"Container"}>
         <div className={"TitleBlock"}>
           <svg
+            id={"add"}
             height="50px"
             viewBox="-64 0 512 512"
             width="50px"

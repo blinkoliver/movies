@@ -7,4 +7,5 @@ export const addToWatchList = movieId => {
     JSON.parse(localStorage.getItem("watchlistMovieIds")) || [];
   let updateWatchlist = [...currentWatchlist, movieId];
   localStorage.setItem("watchlistMovieIds", JSON.stringify(updateWatchlist));
+  document.getElementById("add").style.fill = "blue";
 };

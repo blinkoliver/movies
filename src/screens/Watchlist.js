@@ -29,6 +29,11 @@ class Watchlist extends React.Component {
     this.setState({ moviesInformation: currentWatchlist });
   };
 
+  clearWatchList = () => {
+    localStorage.clear();
+    this.setState({ moviesInformation: [] });
+  };
+
   componentDidMount() {
     this.getActualWatchList();
   }
@@ -37,8 +42,20 @@ class Watchlist extends React.Component {
     if (this.state.loading) {
       return <Load />;
     }
+    if (this.state.moviesInformation === []) {
+      return (
+        <div className={"Container"}>
+          <div className={"ClearAll"}>
+            <h1>there is nothing here</h1>
+          </div>
+        </div>
+      );
+    }
     return (
       <div className={"Container"}>
+        <div className={"ClearAll"}>
+          <button onClick={() => this.clearWatchList()}>Clear All</button>
+        </div>
         <div className={"KnownForItems"} style={{ flexDirection: "column" }}>
           {this.state.moviesInformation.map(result => (
             <div key={result.id} style={{ flexDirection: "row" }}>
