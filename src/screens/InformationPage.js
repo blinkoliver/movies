@@ -3,8 +3,12 @@ import moment from "moment/moment";
 import "moment-duration-format";
 import Load from "../components/Load";
 import { Link } from "react-router-dom";
-import { Fetch } from "../utils";
-import { addToWatchList } from "../utils";
+import {
+  Fetch,
+  addToWatchList,
+  removeFromWatchList,
+  isMovieInWatchlist
+} from "../utils";
 
 class InformationPage extends React.Component {
   constructor(props) {
@@ -16,7 +20,8 @@ class InformationPage extends React.Component {
       cast: [],
       directors: [],
       writers: [],
-      recommendations: []
+      recommendations: [],
+      isMovieInWatchList: isMovieInWatchList() || false
     };
   }
 
@@ -72,6 +77,7 @@ class InformationPage extends React.Component {
     this.fetchTrailerInfo();
     this.fetchCastCrew();
     this.fetchRecommendation();
+    isMovieInWatchlist(this.state.post.id);
   }
 
   componentDidUpdate(prevProps) {
@@ -84,6 +90,7 @@ class InformationPage extends React.Component {
   }
 
   render() {
+    console.log(this.state.isMovieInWatchList);
     const genres = this.state.post.genres || [];
     const production_countries = this.state.post.production_countries || [];
 
@@ -93,19 +100,35 @@ class InformationPage extends React.Component {
     return (
       <div className={"Container"}>
         <div className={"TitleBlock"}>
-          <svg
-            id={"add"}
-            height="50px"
-            viewBox="-64 0 512 512"
-            width="50px"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="gold"
-            fill="gold"
-            onClick={() => addToWatchList(this.state.post)}
-          >
-            <path d="m324.070312 0h-264.058593c-33.089844 0-60.011719 26.882812-60.011719 59.929688v452.070312l192.066406-125.066406 192.015625 124.4375v-451.441406c0-33.046876-26.921875-59.929688-60.011719-59.929688zm20.003907 437.765625-152.058594-98.542969-152.007813 98.980469v-378.273437c0-10.984376 8.972657-19.921876 20.003907-19.921876h264.058593c11.027344 0 20.003907 8.9375 20.003907 19.921876zm-132.027344-267.730469h70.015625v40.011719h-70.015625v70.011719h-40.011719v-70.011719h-70.011718v-40.011719h70.011718v-70.011718h40.011719zm0 0" />
-            <title>Click to add to watchlist</title>
-          </svg>
+          {this.state.isMovieInWatchList ? (
+            <button
+              id={"add"}
+              onClick={() => {
+                addToWatchList(this.state.post);
+                this.setState({ isMovieInWatchlist: false });
+              }}
+            >
+              <p id={"add"}>
+                add to
+                <br />
+                WatchList
+              </p>
+            </button>
+          ) : (
+            <button
+              id={"add"}
+              onClick={() => {
+                removeFromWatchList(this.state.post);
+                this.setState({ isMovieInWatchlist: true });
+              }}
+            >
+              <p id={"add"}>
+                remove from
+                <br />
+                WatchList
+              </p>
+            </button>
+          )}
           <div className={"TitleBar"}>
             <h1>
               {this.state.post.original_title + " "}

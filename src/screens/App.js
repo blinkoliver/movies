@@ -31,7 +31,7 @@ class App extends React.Component {
           .then(posts => {
             let results = posts.results;
             this.setState({ results: results });
-            console.log(results);
+            // console.log(results);
           })
           .catch(this.setState({ error: true }));
       }

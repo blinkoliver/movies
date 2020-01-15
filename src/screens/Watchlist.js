@@ -1,6 +1,7 @@
 import React from "react";
 import Load from "../components/Load";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 
 class Watchlist extends React.Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class Watchlist extends React.Component {
     let actualWatchList = JSON.parse(
       localStorage.getItem("watchlistMovieIds") || []
     );
-    this.setState({ moviesInformation: actualWatchList }, () =>
+    let currentUniqueWatchList = _.uniqBy(actualWatchList, "id");
+    console.log(currentUniqueWatchList);
+    this.setState({ moviesInformation: currentUniqueWatchList }, () =>
       this.setState({ loading: false })
     );
   };
