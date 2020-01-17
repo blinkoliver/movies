@@ -7,7 +7,7 @@ import {
   Fetch,
   addToWatchList,
   removeFromWatchList,
-  isMovieInWatchlist
+  isMovieInWatchList
 } from "../utils";
 
 class InformationPage extends React.Component {
@@ -21,7 +21,7 @@ class InformationPage extends React.Component {
       directors: [],
       writers: [],
       recommendations: [],
-      isMovieInWatchList: isMovieInWatchList() || false
+      isMovieInWatchList: isMovieInWatchList(this.props.match.params.id)
     };
   }
 
@@ -77,11 +77,13 @@ class InformationPage extends React.Component {
     this.fetchTrailerInfo();
     this.fetchCastCrew();
     this.fetchRecommendation();
-    isMovieInWatchlist(this.state.post.id);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.setState({
+        isMovieInWatchList: isMovieInWatchList(this.props.match.params.id)
+      });
       this.fetchMovieInfo(this.props.match.params.id);
       this.fetchTrailerInfo(this.props.match.params.id);
       this.fetchCastCrew(this.props.match.params.id);
@@ -90,7 +92,6 @@ class InformationPage extends React.Component {
   }
 
   render() {
-    console.log(this.state.isMovieInWatchList);
     const genres = this.state.post.genres || [];
     const production_countries = this.state.post.production_countries || [];
 
@@ -102,14 +103,14 @@ class InformationPage extends React.Component {
         <div className={"TitleBlock"}>
           {this.state.isMovieInWatchList ? (
             <button
-              id={"add"}
+              id={"remove"}
               onClick={() => {
-                addToWatchList(this.state.post);
-                this.setState({ isMovieInWatchlist: false });
+                removeFromWatchList(this.state.post.id);
+                this.setState({ isMovieInWatchList: false });
               }}
             >
-              <p id={"add"}>
-                add to
+              <p>
+                remove from
                 <br />
                 WatchList
               </p>
@@ -118,12 +119,12 @@ class InformationPage extends React.Component {
             <button
               id={"add"}
               onClick={() => {
-                removeFromWatchList(this.state.post);
-                this.setState({ isMovieInWatchlist: true });
+                addToWatchList(this.state.post);
+                this.setState({ isMovieInWatchList: true });
               }}
             >
-              <p id={"add"}>
-                remove from
+              <p>
+                add to
                 <br />
                 WatchList
               </p>

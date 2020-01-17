@@ -2,6 +2,7 @@ import React from "react";
 import Load from "../components/Load";
 import { Link } from "react-router-dom";
 import _ from "lodash";
+import { removeFromWatchList, clearWatchList } from "../utils";
 
 class Watchlist extends React.Component {
   constructor(props) {
@@ -14,27 +15,12 @@ class Watchlist extends React.Component {
 
   getActualWatchList = () => {
     let actualWatchList = JSON.parse(
-      localStorage.getItem("watchlistMovieIds") || []
+      localStorage.getItem("watchlistMovieIds") || "[]"
     );
     let currentUniqueWatchList = _.uniqBy(actualWatchList, "id");
-    console.log(currentUniqueWatchList);
     this.setState({ moviesInformation: currentUniqueWatchList }, () =>
       this.setState({ loading: false })
     );
-  };
-
-  removeToWatchList = movieId => {
-    let currentWatchlist =
-      JSON.parse(localStorage.getItem("watchlistMovieIds")) || [];
-    let index = currentWatchlist.findIndex(element => element.id === movieId);
-    currentWatchlist.splice(index, 1);
-    localStorage.setItem("watchlistMovieIds", JSON.stringify(currentWatchlist));
-    this.setState({ moviesInformation: currentWatchlist });
-  };
-
-  clearWatchList = () => {
-    localStorage.clear();
-    this.setState({ moviesInformation: [] });
   };
 
   componentDidMount() {
@@ -42,36 +28,46 @@ class Watchlist extends React.Component {
   }
 
   render() {
+    console.log(this.state.moviesInformation);
     if (this.state.loading) {
       return <Load />;
-    }
-    if (this.state.moviesInformation === []) {
-      return (
-        <div className={"Container"}>
-          <div className={"ClearAll"}>
-            <h1>there is nothing here</h1>
-          </div>
-        </div>
-      );
     }
     return (
       <div className={"Container"}>
         <div className={"ClearAll"}>
-          <button onClick={() => this.clearWatchList()}>Clear All</button>
+          {this.state.moviesInformation.length === 0 ? (
+            <h1>there is nothing here</h1>
+          ) : (
+            <button
+              onClick={() => {
+                clearWatchList();
+                this.setState({ moviesInformation: [] });
+              }}
+            >
+              Clear All
+            </button>
+          )}
         </div>
         <div className={"KnownForItems"} style={{ flexDirection: "column" }}>
           {this.state.moviesInformation.map(result => (
-            <div key={result.id} style={{ flexDirection: "row" }}>
-              <Link key={result.id} to={`/InformationPage/${result.id}`}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${result.poster_path}`}
-                  alt={result.id}
-                />
-                {result.original_title}
-              </Link>
-              <button onClick={() => this.removeToWatchList(result.id)}>
-                remove
-              </button>
+            <div id={"Suggest"} key={result.id}>
+              <div>
+                <Link key={result.id} to={`/InformationPage/${result.id}`}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w200${result.poster_path}`}
+                    alt={result.id}
+                  />
+                  {result.original_title}
+                </Link>
+                <button
+                  onClick={() => {
+                    removeFromWatchList(result.id);
+                    this.getActualWatchList();
+                  }}
+                >
+                  <h3>Remove</h3>
+                </button>
+              </div>
               <h2>{result.overview}</h2>
             </div>
           ))}

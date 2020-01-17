@@ -1,4 +1,4 @@
-import { includes } from "lodash";
+import _ from "lodash";
 
 export const Fetch = (url, params) => {
   return fetch(url).then(response => response.json());
@@ -14,13 +14,19 @@ export const addToWatchList = movieId => {
 export const removeFromWatchList = movieId => {
   let currentWatchlist =
     JSON.parse(localStorage.getItem("watchlistMovieIds")) || [];
-  let index = currentWatchlist.findIndex(element => element.id === movieId);
-  currentWatchlist.splice(index, 1);
-  localStorage.setItem("watchlistMovieIds", JSON.stringify(currentWatchlist));
+  const updatedWatchList = currentWatchlist.filter(
+    element => element.id !== movieId
+  );
+  localStorage.setItem("watchlistMovieIds", JSON.stringify(updatedWatchList));
 };
-export const isMovieInWatchlist = movieId => {
-  let currentWatchlist =
-    JSON.parse(localStorage.getItem("watchlistMovieIds")) || [];
-  if (!includes(currentWatchlist, movieId)) return true;
+
+export const isMovieInWatchList = movieId => {
+  let currentWatchlist = JSON.stringify(
+    localStorage.getItem("watchlistMovieIds")
+  );
+  return _.includes(currentWatchlist, movieId);
 };
-console.log(isMovieInWatchlist());
+
+export const clearWatchList = () => {
+  localStorage.setItem("watchlistMovieIds", "[]");
+};

@@ -8,7 +8,12 @@ import Genres from "../screens/Genres";
 import Year from "../screens/Year";
 import Home from "./Home";
 import Watchlist from "../screens/Watchlist";
-import { Fetch } from "../utils";
+import {
+  Fetch,
+  addToWatchList,
+  removeFromWatchList,
+  isMovieInWatchList
+} from "../utils";
 
 class App extends React.Component {
   state = {
@@ -89,6 +94,33 @@ class App extends React.Component {
                           </span>
                         </div>
                       </Link>
+                      {isMovieInWatchList(result.id) ? (
+                        <button
+                          id={"remove"}
+                          onClick={() => {
+                            removeFromWatchList(result.id);
+                          }}
+                        >
+                          <p>
+                            remove from
+                            <br />
+                            WatchList
+                          </p>
+                        </button>
+                      ) : (
+                        <button
+                          id={"add"}
+                          onClick={() => {
+                            addToWatchList(result);
+                          }}
+                        >
+                          <p>
+                            add to
+                            <br />
+                            WatchList
+                          </p>
+                        </button>
+                      )}
                     </div>
                   ))}
                 </div>
