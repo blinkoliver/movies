@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Name from "../screens/Name";
 import Genres from "../screens/Genres";
 import Year from "../screens/Year";
-import Home from "./Home";
+import Home from "../screens/Home";
+import Counter from "./Counter";
 import Watchlist from "../screens/Watchlist";
 import {
   Fetch,
@@ -131,6 +132,9 @@ class App extends React.Component {
               <button>
                 <Link to={"/Watchlist"}>Watchlist</Link>
               </button>
+              <button>
+                <Link to={"/Counter"}>Sign in</Link>
+              </button>
             </div>
           </div>
         </header>
@@ -142,6 +146,7 @@ class App extends React.Component {
           <Route path={"/Genres/:id"} component={Genres} />
           <Route path={"/Year/:id"} component={Year} />
           <Route path={"/Watchlist"} component={Watchlist} />
+          <Route path={"/Counter"} component={Counter} />
         </div>
 
         <footer></footer>
