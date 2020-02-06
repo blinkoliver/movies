@@ -9,12 +9,22 @@ import Year from "../screens/Year";
 import Home from "../screens/Home";
 import Counter from "./Counter";
 import Watchlist from "../screens/Watchlist";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import {
   Fetch,
   addToWatchList,
   removeFromWatchList,
   isMovieInWatchList
 } from "../utils";
+
+// const changeInputValue = newInputValue => {
+//   console.log(newInputValue);
+//   return {
+//     type: value,
+//     payload: newInputValue
+//   };
+// };
 
 class App extends React.Component {
   state = {
@@ -39,7 +49,7 @@ class App extends React.Component {
             this.setState({ results: results });
             // console.log(results);
           })
-          .catch(this.setState({ error: true }));
+          .catch(() => this.setState({ error: true }));
       }
     });
   }
@@ -56,6 +66,8 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.props);
+    const { dispatch } = this.props.dispatch;
     return (
       <Router>
         <header>
@@ -155,4 +167,25 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const pullStoreToProps = state => {
+  console.log(state);
+  return {
+    inputValue: state.inputValue,
+    selectedValue: state.selectValue,
+    results: state.result,
+    inputIsFocused: state.inputIsFocused,
+    error: state.error,
+    loading: state.loading,
+    post: state.post
+  };
+};
+
+// const mapActionsToProps = dispatch => {
+//   return {
+//     changeInputValue: bindActionCreators(changeInputValue, dispatch)
+//   };
+// };
+
+const WrappedAppComponent = connect(pullStoreToProps)(App);
+
+export default WrappedAppComponent;
