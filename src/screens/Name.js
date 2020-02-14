@@ -34,8 +34,6 @@ class Name extends React.Component {
       this.setState({ works: post.crew.slice(0, 4) }, () =>
         this.setState({ loading: false })
       );
-
-      // console.log(this.state.works)
     });
   }
 

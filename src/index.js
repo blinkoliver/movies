@@ -1,30 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import WrappedAppComponent from "./screens/App";
+import App from "./screens/App";
 import * as serviceWorker from "./serviceWorker";
-import { Provider } from "react-redux";
 import { createStore } from "redux";
-
-const initialState = {
-  inputValue: "",
-  selectedValue: "",
-  results: [],
-  inputIsFocused: true,
-  error: true,
-  loading: true,
-  post: []
-};
-
-const reducer = (state = initialState, action) => {
-  return state;
-};
+import { Provider } from "react-redux";
+import reducer from "./reducers/index";
 
 const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <WrappedAppComponent />
+    <App />
   </Provider>,
   document.getElementById("root")
 );

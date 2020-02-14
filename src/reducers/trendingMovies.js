@@ -1,6 +1,6 @@
 const initialState = {
-  loading: true,
-  movies: []
+  loading: false,
+  trendingMovies: []
 };
 
 const trendingMovies = (state = initialState, action) => {
@@ -8,14 +8,10 @@ const trendingMovies = (state = initialState, action) => {
     case "SET_POPULAR_MOVIES":
       return {
         ...state,
-        movies: action.movies,
+        trendingMovies: action.trendingMovies,
         loading: true
       };
-    case "SET_MOVIES_LOADING":
-      return {
-        ...state,
-        loading: false
-      };
+
     default:
       return state;
   }

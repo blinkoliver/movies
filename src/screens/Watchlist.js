@@ -28,7 +28,6 @@ class Watchlist extends React.Component {
   }
 
   render() {
-    console.log(this.state.moviesInformation);
     if (this.state.loading) {
       return <Load />;
     }

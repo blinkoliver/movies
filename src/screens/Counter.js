@@ -23,10 +23,6 @@ const resetAction = { type: "RESET" };
 const store = createStore(reducer, initialState);
 
 class Counter extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     store.subscribe(() => this.forceUpdate());
   }
