@@ -1,4 +1,4 @@
-export const setPopularMovies = trendingMovies => ({
-  type: "SET_POPULAR_MOVIES",
+export const setTrendingMovies = trendingMovies => ({
+  type: "SET_TRENDING_MOVIES",
   trendingMovies
 });

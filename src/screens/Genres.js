@@ -2,24 +2,16 @@ import React from "react";
 import Load from "../components/Load";
 import { Link } from "react-router-dom";
 import { Fetch } from "../utils";
+import { connect } from "react-redux";
+import {setMoviesAboutGenres} from "../actions/moviesAboutGenres"
 
 class Genres extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      post: {},
-      loading: true
-    };
-  }
+  
   fetchFilmsInfoAboutGenres() {
     Fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${this.props.match.params.id}`
-    ).then(post => {
-      this.setState({ post: post.results }, () =>
-        this.setState({ loading: false })
-      );
-      // console.log(this.state.post)
-    });
+    )
+    .then( moviesAboutGenres => this.props.setMoviesAboutGenres(moviesAboutGenres));
   }
 
   componentDidMount() {
@@ -33,13 +25,12 @@ class Genres extends React.Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return <Load />;
-    }
+    console.log(this.props)
+    if (this.props.moviesAboutGenres.loading)
     return (
       <div className={"Container"}>
         <div className={"KnownForItems"} style={{ flexDirection: "column" }}>
-          {this.state.post.map(result => (
+          {this.props.moviesAboutGenres.moviesAboutGenres.results.map(result => (
             <div key={result.id} style={{ flexDirection: "row" }}>
               <Link key={result.id} to={`/InformationPage/${result.id}`}>
                 <img
@@ -54,7 +45,15 @@ class Genres extends React.Component {
         </div>
       </div>
     );
+      return <Load />;
   }
 }
 
-export default Genres;
+const mapStateToProps = state => ({
+  moviesAboutGenres: state.moviesAboutGenres
+})
+const mapDispatchToProps =dispatch=> ({
+  setMoviesAboutGenres: moviesAboutGenres=> dispatch(setMoviesAboutGenres(moviesAboutGenres))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Genres);

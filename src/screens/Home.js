@@ -3,13 +3,13 @@ import Load from "../components/Load";
 import { Link } from "react-router-dom";
 import { Fetch } from "../utils";
 import { connect } from "react-redux";
-import { setPopularMovies} from "../actions/trendingMovies";
+import { setTrendingMovies } from "../actions/trendingMovies";
 
 class Home extends React.Component {
   fetchTrendingFilm() {
     Fetch(
       `https://api.themoviedb.org/3/trending/movie/week?api_key=6ed6e56030be8bc7d1821d5b302e302e`
-    ).then(trendingMovies => this.props.setPopularMovies(trendingMovies));
+    ).then(trendingMovies => this.props.setTrendingMovies(trendingMovies));
   }
 
   componentDidMount() {
@@ -17,8 +17,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-
     if (this.props.trendingMovies.loading)
       return (
         <div className={"Container"}>
@@ -46,12 +44,10 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ( {
   trendingMovies: state.trendingMovies
-  // loading: state.loading
 });
 
 const mapDispatchToProps = dispatch => ( {
-  setPopularMovies: trendingMovies => dispatch(setPopularMovies(trendingMovies))
-  // setMoviesLoading: () => dispatch(setMoviesLoading())
+  setTrendingMovies: trendingMovies => dispatch(setTrendingMovies(trendingMovies))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

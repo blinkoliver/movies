@@ -5,7 +5,7 @@ const initialState = {
 
 const trendingMovies = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_POPULAR_MOVIES":
+    case "SET_TRENDING_MOVIES":
       return {
         ...state,
         trendingMovies: action.trendingMovies,
