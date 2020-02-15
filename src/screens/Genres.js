@@ -3,57 +3,58 @@ import Load from "../components/Load";
 import { Link } from "react-router-dom";
 import { Fetch } from "../utils";
 import { connect } from "react-redux";
-import {setMoviesAboutGenres} from "../actions/moviesAboutGenres"
+import { setMoviesByGenres } from "../actions/movies";
 
 class Genres extends React.Component {
-  
-  fetchFilmsInfoAboutGenres() {
+  fetchFilmsInfoByGenres() {
     Fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${this.props.match.params.id}`
-    )
-    .then( moviesAboutGenres => this.props.setMoviesAboutGenres(moviesAboutGenres));
+    ).then((moviesByGenres) => this.props.setMoviesByGenres(moviesByGenres));
   }
 
   componentDidMount() {
-    this.fetchFilmsInfoAboutGenres();
+    this.fetchFilmsInfoByGenres();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.fetchFilmsInfoAboutGenres(this.props.match.params.id);
+      this.fetchFilmsInfoByGenres(this.props.match.params.id);
     }
   }
 
   render() {
-    console.log(this.props)
-    if (this.props.moviesAboutGenres.loading)
-    return (
-      <div className={"Container"}>
-        <div className={"KnownForItems"} style={{ flexDirection: "column" }}>
-          {this.props.moviesAboutGenres.moviesAboutGenres.results.map(result => (
-            <div key={result.id} style={{ flexDirection: "row" }}>
-              <Link key={result.id} to={`/InformationPage/${result.id}`}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${result.poster_path}`}
-                  alt={result.id}
-                />
-                {result.original_title}
-              </Link>
-              <h2>{result.overview}</h2>
-            </div>
-          ))}
+    if (this.props.moviesByGenresLoading)
+      return (
+        <div className={"Container"}>
+          <div className={"KnownForItems"} style={{ flexDirection: "column" }}>
+            {this.props.moviesByGenres.results.map(
+              (result) => (
+                <div key={result.id} style={{ flexDirection: "row" }}>
+                  <Link key={result.id} to={`/InformationPage/${result.id}`}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200${result.poster_path}`}
+                      alt={result.id}
+                    />
+                    {result.original_title}
+                  </Link>
+                  <h2>{result.overview}</h2>
+                </div>
+              )
+            )}
+          </div>
         </div>
-      </div>
-    );
-      return <Load />;
+      );
+    return <Load />;
   }
 }
 
-const mapStateToProps = state => ({
-  moviesAboutGenres: state.moviesAboutGenres
-})
-const mapDispatchToProps =dispatch=> ({
-  setMoviesAboutGenres: moviesAboutGenres=> dispatch(setMoviesAboutGenres(moviesAboutGenres))
-})
+const mapStateToProps = (state) => ({
+  moviesByGenres: state.movies.moviesByGenres,
+  moviesByGenresLoading: state.movies.moviesByGenresLoading
+});
+const mapDispatchToProps = (dispatch) => ({
+  setMoviesByGenres: (moviesByGenres) =>
+    dispatch(setMoviesByGenres(moviesByGenres))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Genres);

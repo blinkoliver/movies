@@ -38,6 +38,18 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "jest": "^24.8.0"
+  },
+  
+  
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  " editor.formatOnSave ": true,
+  " [javascript] ": {
+    " editor.formatOnSave ": true
   }
 }

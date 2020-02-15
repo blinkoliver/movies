@@ -3,7 +3,7 @@ import Load from "../components/Load";
 import { Link } from "react-router-dom";
 import { Fetch } from "../utils";
 import { connect } from "react-redux";
-import { setTrendingMovies } from "../actions/trendingMovies";
+import { setTrendingMovies } from "../actions/movies";
 
 class Home extends React.Component {
   fetchTrendingFilm() {
@@ -17,14 +17,14 @@ class Home extends React.Component {
   }
 
   render() {
-    if (this.props.trendingMovies.loading)
+    if (this.props.trendingMoviesLoading)
       return (
         <div className={"Container"}>
           <div>
             <h1 style={{ color: "darkslategray" }}>Trending movies this week</h1>
           </div>
           <div className={"KnownForItems"} style={{ flexDirection: "column" }}>
-            {this.props.trendingMovies.trendingMovies.results
+            {this.props.trendingMovies.results
               .slice(0, 6)
               .map(result=>(
                 <div key={result.id} style={{ flexDirection: "row" }}>
@@ -43,10 +43,11 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = state => ( {
-  trendingMovies: state.trendingMovies
+  trendingMovies: state.movies.trendingMovies,
+  trendingMoviesLoading: state.movies.trendingMoviesLoading
 });
 
-const mapDispatchToProps = dispatch => ( {
+const mapDispatchToProps = dispatch => ({
   setTrendingMovies: trendingMovies => dispatch(setTrendingMovies(trendingMovies))
 });
 
