@@ -3,7 +3,7 @@ import Load from "../components/Load";
 import { Link } from "react-router-dom";
 import { Fetch } from "../utils";
 import { connect } from "react-redux";
-import { setMoviesByGenres } from "../actions/movies";
+import { setMoviesByGenres} from "../actions/movies";
 
 class Genres extends React.Component {
   fetchFilmsInfoByGenres() {
