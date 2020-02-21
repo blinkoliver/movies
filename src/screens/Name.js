@@ -50,7 +50,6 @@ class Name extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     if (this.props.personInformationLoading)
       return (
         <div className={"Container"}>

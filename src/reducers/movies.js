@@ -4,7 +4,7 @@ const initialState = {
   moviesByYear: [],
   moviesByYearLoading: false,
   trendingMovies: [],
-  trendingMoviesLoading: false,
+  trendingMoviesLoading: false
 };
 const movies = (state = initialState, action) => {
   switch (action.type) {
@@ -24,8 +24,10 @@ const movies = (state = initialState, action) => {
       return {
         ...state,
         trendingMovies: action.trendingMovies,
-        trendingMoviesLoading: true
+        trendingMoviesLoading: false
       };
+    case "SET_TRENDING_MOVIES_LOADING":
+      return { ...state, trendingMoviesLoading: action.trendingMoviesLoading };
     default:
       return state;
   }
