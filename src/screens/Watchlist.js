@@ -1,5 +1,5 @@
 import React from "react";
-import Load from "../components/Load";
+import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 import { removeFromWatchList, clearWatchList } from "../utils";
@@ -29,7 +29,7 @@ class Watchlist extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <Load />;
+      return <Loading/>;
     }
     return (
       <div className={"Container"}>

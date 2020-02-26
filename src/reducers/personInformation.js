@@ -1,20 +1,25 @@
 const initialState = {
   personInformation: [],
   worksOfThisPerson: [],
-  personInformationLoading: false
+  namePageLoading: false
 };
 const personInformation = (state = initialState, action) => {
   switch (action.type) {
     case "SET_PERSON_INFORMATION":
       return {
         ...state,
-        personInformation: action.personInformation,
+        personInformation: action.personInformation
       };
     case "SET_WORKS_OF_THIS_PERSON":
       return {
         ...state,
         worksOfThisPerson: action.worksOfThisPerson,
-        personInformationLoading: true
+        namePageLoading: false
+      };
+    case "SET_NAME_PAGE_LOADING":
+      return {
+        ...state,
+        namePageLoading: action.namePageLoading
       };
     default:
       return state;

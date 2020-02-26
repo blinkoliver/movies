@@ -12,14 +12,26 @@ const movies = (state = initialState, action) => {
       return {
         ...state,
         moviesByGenres: action.moviesByGenres,
-        moviesByGenresLoading: true
+        moviesByGenresLoading: false
       };
+    case "SET_MOVIES_BY_GENRES_LOADING":
+      return {
+        ...state,
+        moviesByGenresLoading: action.moviesByGenresLoading
+      };
+
     case "SET_MOVIES_BY_YEAR":
       return {
         ...state,
         moviesByYear: action.moviesByYear,
-        moviesByYearLoading: true
+        moviesByYearLoading: false
       };
+    case "SET_MOVIES_BY_YEAR_LOADING":
+      return {
+        ...state,
+        moviesByYearLoading: action.moviesByYearLoading
+      };
+
     case "SET_TRENDING_MOVIES":
       return {
         ...state,

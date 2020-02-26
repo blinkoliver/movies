@@ -3,11 +3,16 @@ const initialState = {
   trailers: [],
   castAndCrew: [],
   recommendations: [],
-  informationAboutFilmLoading: false
+  informationPageLoading: false
 };
 
 const informationAboutFilm = (state = initialState, action) => {
   switch (action.type) {
+    case "SET_INFORMATION_PAGE_LOADING":
+      return {
+        ...state,
+        informationPageLoading: action.informationPageLoading
+      };
     case "SET_INFORMATION_ABOUT_FILM":
       return {
         ...state,
@@ -27,7 +32,7 @@ const informationAboutFilm = (state = initialState, action) => {
       return {
         ...state,
         recommendations: action.recommendations,
-        informationAboutFilmLoading: true
+        informationPageLoading: false
       };
     default:
       return state;

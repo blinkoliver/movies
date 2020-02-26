@@ -1,5 +1,5 @@
 import React from "react";
-import Load from "../components/Load";
+import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getTrendingMovies } from "../actions/movies";
@@ -13,7 +13,7 @@ class Home extends React.Component {
 
   render() {
     if (this.props.trendingMoviesLoading) {
-      return <Load />;
+      return <Loading/>;
     }
     return (
       <div className={"Container"}>
