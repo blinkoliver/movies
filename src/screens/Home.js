@@ -21,7 +21,6 @@ const Home = (props) => {
     fetchTrendingMovies();
   }, []);
 
-  console.log(props, trendingMovies, trendingMoviesLoading);
 
   return trendingMoviesLoading ? (
     <Loading />

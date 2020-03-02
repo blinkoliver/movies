@@ -12,7 +12,7 @@ import {
   Fetch,
   addToWatchList,
   removeFromWatchList,
-  isMovieInWatchList
+  isMovieInWatchListFunction
 } from "../utils";
 
 class App extends React.Component {
@@ -33,7 +33,7 @@ class App extends React.Component {
         Fetch(
           `https://api.themoviedb.org/3/search/movie?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US&query=${this.state.inputValue}&page=1&include_adult=false`
         )
-          .then(posts => {
+          .then((posts) => {
             let results = posts.results;
             this.setState({ results: results });
             // console.log(results);
@@ -67,13 +67,13 @@ class App extends React.Component {
 
             <div className={"search"}>
               <Input
-                onChange={event => this.handleInput(event)}
+                onChange={(event) => this.handleInput(event)}
                 onBlur={this.onBlur}
                 onFocus={this.onFocus}
               />
               {this.state.inputIsFocused && (
                 <div id={"suggestSearch"}>
-                  {this.state.results.map(result => (
+                  {this.state.results.map((result) => (
                     <div key={result.id} id={"suggest"}>
                       <Link
                         key={result.id}
@@ -94,7 +94,7 @@ class App extends React.Component {
                           </span>
                         </div>
                       </Link>
-                      {isMovieInWatchList(result.id) ? (
+                      {isMovieInWatchListFunction(result.id) ? (
                         <button
                           id={"remove"}
                           onClick={() => {

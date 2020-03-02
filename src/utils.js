@@ -20,7 +20,7 @@ export const removeFromWatchList = movieId => {
   localStorage.setItem("watchlistMovieIds", JSON.stringify(updatedWatchList));
 };
 
-export const isMovieInWatchList = movieId => {
+export const isMovieInWatchListFunction = movieId => {
   let currentWatchlist = JSON.stringify(
     localStorage.getItem("watchlistMovieIds")
   );
