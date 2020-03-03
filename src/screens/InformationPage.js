@@ -18,42 +18,42 @@ const InformationPage = (props) => {
   const [informationPageLoading, setInformationPageLoading] = useState(false);
   const [isMovieInWatchListState, setIsMovieInWatchListState] = useState(false);
 
-  const fetchInfotmationForInformationPage = async () => {
+  const fetchInfotmationForInformationPage = async (id) => {
     setInformationPageLoading(true);
 
     const res1 = await fetch(
-      `https://api.themoviedb.org/3/movie/${props.match.params.id}?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US`
     );
     const informationAboutFilm = await res1.json();
     setInformationAboutFilm(informationAboutFilm);
 
     const res2 = await fetch(
-      `https://api.themoviedb.org/3/movie/${props.match.params.id}}/credits?api_key=6ed6e56030be8bc7d1821d5b302e302e`
+      `https://api.themoviedb.org/3/movie/${id}}/credits?api_key=6ed6e56030be8bc7d1821d5b302e302e`
     );
     const castAndCrew = await res2.json();
     setCastAndCrew(castAndCrew);
 
     const res3 = await fetch(
-      `https://api.themoviedb.org/3/movie/${props.match.params.id}/videos?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US`
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US`
     );
     const trailers = await res3.json();
     setTrailers(trailers.results[0]);
 
     const res4 = await fetch(
-      `https://api.themoviedb.org/3/movie/${props.match.params.id}/recommendations?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=6ed6e56030be8bc7d1821d5b302e302e&language=en-US&page=1`
     );
     const recommendations = await res4.json();
     setRecommendations(recommendations.results);
 
     setIsMovieInWatchListState(
-      isMovieInWatchListFunction(props.match.params.id)
+      isMovieInWatchListFunction(id)
     );
 
     setInformationPageLoading(false);
   };
 
   useEffect(() => {
-    fetchInfotmationForInformationPage();
+    fetchInfotmationForInformationPage(props.match.params.id);
   }, [props.match.params.id]);
 
   const genres = informationAboutFilm.genres || [];
